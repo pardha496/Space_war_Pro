@@ -6,7 +6,7 @@ playerImg = pygames.image.load('assets/player.png')
 playerX = 370
 playerY = 480
 playerX_change = 0
-playerY_changr = 0
+playerY_change = 0
 
 def main():
 
