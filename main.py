@@ -1,5 +1,6 @@
 import math
 import random
+from typing import Collection
 import pygame
 from pygame import mixer
 
@@ -49,8 +50,8 @@ for i in range(num_of_enemies):
     enemyImg.append(pygame.image.load('assets/enemy.png'))
     enemyX.append(random.randint(0, 736))
     enemyY.append(random.randint(50, 150))
-    enemyX_change.append(4)
-    enemyY_change.append(40)
+    enemyX_change.append(1)
+    enemyY_change.append(5)
 
 
 # Bullet
@@ -188,3 +189,16 @@ def main():
                 elif enemyX[i] >= 736:
                     enemyX_change[i] = -4
                     enemyY[i] += enemyY_change[i]
+                
+                # Collision
+                collision = isCollision(enemyX[i], enemyY[i], bulletX, bulletY)
+                if collision:
+                    explosionSound = mixer.Sound("assets/explosion.wav")
+                    explosionSound.play()
+                    bulletY = 480
+                    bullet_state = "ready"
+                    score_value += 1
+                    enemyX[i] = random.randint(0, 736)
+                    enemyY[i] = random.randint(50, 150)
+                
+                enemy(enemyX[i], enemyY[i], i)
