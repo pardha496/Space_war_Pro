@@ -1,28 +1,43 @@
 import math
 import random
-
-import pygames
+import pygame
 from pygame import mixer
 
-pygames.init()
+# Initialize the pygame
+pygame.init()
 
-screen = pygames.display.set_mode((800, 600))
+# Dimensions
+WIDTH, HEIGHT = 750, 750
 
-background = pygames.image.load('assests/background.png')
+# Clock
+clock = pygame.time.Clock()
 
-mixer.music.load("assests/background.wav")
+# Fonts
+lost_font = pygame.font.SysFont("comicsans", 50)
+
+# screen resolution
+screen = pygame.display.set_mode((800, 600))
+
+# Background Image
+background = pygame.image.load('assets/background.png')
+
+# Opening Sound
+mixer.music.load("assets/background.wav")
 mixer.music.play(-1)
 
-pygames.display.set_caption("Space Invader")
-icon = pygames.image.load('ufo.png')
-pygames.display.set_icon(icon)
+# Game Title and Icon
+pygame.display.set_caption("Space Invader")
+icon = pygame.image.load('ufo.png')
+pygame.display.set_icon(icon)
 
-playerImg = pygames.image.load('assests/player.png')
+# Player
+playerImg = pygame.image.load('assets/player.png')
 playerX = 370
 playerY = 480
 playerX_change = 0
 playerY_change = 0
 
+# Enemy
 enemyImg = []
 enemyX = []
 enemyY = []
@@ -31,25 +46,41 @@ enemyY_change = []
 num_of_enemies = 6
 
 for i in range(num_of_enemies):
-    enemyImg.append(pygame.image.load('assests/enemy.png'))
+    enemyImg.append(pygame.image.load('assets/enemy.png'))
     enemyX.append(random.randint(0, 736))
     enemyY.append(random.randint(50, 150))
     enemyX_change.append(4)
     enemyY_change.append(40)
 
-bulletImg = pygames.image.load('assests/bullet.png')
+
+# Bullet
+
+# Ready - You can't see the bullet
+# Fire - The bullet is currently moving
+bulletImg = pygame.image.load('assets/bullet.png')
 bulletX = 0
 bulletY = 480
 bulletX_change=0
 bulletY_change=10
 bullet_state="ready"
 
+# Score
 score_value=0
-font=pygames.font.Font('freesansbold.tff',32)
+font=pygame.font.Font('freesansbold.tff',32)
 textX=10
 textY=10
 
-over_font=pygames.font.Font('freesansbold',64)
+# define game pause here
+# def pause()
+ 
+# Game Over
+over_font=pygame.font.Font('freesansbold.ttf',64)
+
+def endofLevel1 ():
+    levelEnd = over_font.render("Thanks for play!", True, (255, 255, 255))
+    screen.blit(levelEnd, (200, 250))
+    levelEnd = over_font.render("Level 1 Completed", True, (255, 255, 255))
+    screen.blit(levelEnd, (110, 340))
 
 def show_score(x, y):
     score = font.render("Score : " + str(score_value), True, (255, 255, 255))
@@ -85,7 +116,7 @@ def isCollision(enemyX, enemyY, bulletX, bulletY):
 running = True
 
 
-
+# Game Loop
 def main():
 
     global playerImg
@@ -97,29 +128,8 @@ def main():
     global bullet_state
     global score_value
     global running
-    global win
 
-    while running
-        screen.fill((0,0,0))#RGB = red, Green, Bule
-        screen.blit(background, (0, 0))
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
+    
 
-            if event.type == pygame.KEYDOWN:
-                if event.type == pygame.K_LEFT:
-                    playerX_change =-5 
-                if event.type == pygame.K_RIGHT:
-                    playerX_change = 5
-                if event.type == pygame.K.SPACE:
-                    if bullet_state == "ready":
-                        bulletsound = mixer.sound("assets/laser.wav")
-                        bulletsound.play()
-                        bulletX = playerX
-                        fire_bullet(bulletX, bulletY)
-            
-            if event.type == pygame.KEYUP:
-                if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT)
-                    playerX_change = 0
-
+    
 
