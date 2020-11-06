@@ -8,6 +8,20 @@ playerY = 480
 playerX_change = 0
 playerY_changr = 0
 
+bulletImg = pygame.image.load('assests/bullet.png')
+bulletX = 0
+bulletY = 480
+bulletX_change=0
+bulletY_change=10
+bullet_state="ready"
+
+score_value=0
+font=pygame.font.Font('freesansbold.tff',32)
+textX=10
+textY=10
+
+over_font=pygame.font.Font('freesansbold',64)
+
 def main():
 
     global playerImg
