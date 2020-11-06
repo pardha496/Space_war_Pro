@@ -202,3 +202,16 @@ def main():
                     enemyY[i] = random.randint(50, 150)
                 
                 enemy(enemyX[i], enemyY[i], i)
+    
+    # BUllet Movement
+    if bulletY <= 0:
+        bulletY = 400
+        bullet_state = "ready"
+    
+    if bullet_state == "fire":
+        fire_bullet(bulletX, bulletY)
+        bulletY -= bulletX_change
+    
+    player(playerX, playerY)
+    show_score(textX, textY)
+    pygame.display.update()
