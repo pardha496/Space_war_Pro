@@ -129,7 +129,37 @@ def main():
     global score_value
     global running
 
-    
+    while running:
 
-    
+        # RGB = Red, Green, Blue filters for game
+        screen.fill((0, 0, 0)) # Setting default to value 0
+        
+        # Calling background image
+        screen.blit(background, (0, 0))
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            
+            # if keystroke is pressed check conditions
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    playerX_change = -5
+                if event.key == pygame.K_RIGHT:
+                    playerX_change = 5
+                if event.key == pygame.k_SPACE:
+                    if bullet_state == "ready":
+                        bulletsound = mixer.Sound("assets/laser.wav")
+                        bulletsound.play()
 
+                        # Get the current x cordinate of the spaceship
+                        bulletX = playerX
+                        fire_bullet(bulletX, bulletY)
+            
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                    playerX_change = 0
+
+        # 5 = 5 + -0.1 -> 5 = 5 - 0.1
+        # 5 = 5 + 0.1
+
+        
