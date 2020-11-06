@@ -1,4 +1,5 @@
 import math
+from math import fabs
 import random
 from typing import Collection
 import pygame
@@ -215,3 +216,24 @@ def main():
     player(playerX, playerY)
     show_score(textX, textY)
     pygame.display.update()
+
+def menu_screen():
+    running = True
+    clock = pygame.time.Clock()
+
+    while running:
+        clock.tick(60)
+        screen.fill((0, 0, 50))
+        font = pygame.font.SysFont("comicsans", 60)
+        pygame.draw.rect(screen, (0, 0, 200), (270, 200, 200, 100))
+        text =font.render("Play Game!", 1, (255, 0,0))
+        screen.blit(text, (200,230))
+        pygame.display.update()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                running = False
+    
+    main()
+menu_screen()
