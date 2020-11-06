@@ -1,7 +1,5 @@
 import math
-from math import fabs
-import random
-from typing import Collection
+import random 
 import pygame
 from pygame import mixer
 
@@ -24,7 +22,7 @@ screen = pygame.display.set_mode((800, 600))
 background = pygame.image.load('assets/background.png')
 
 # Opening Sound
-mixer.music.load("assets/background.wav")
+mixer.music.load("assets/background.mp3")
 mixer.music.play(-1)
 
 # Game Title and Icon
