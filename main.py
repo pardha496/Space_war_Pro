@@ -162,4 +162,29 @@ def main():
         # 5 = 5 + -0.1 -> 5 = 5 - 0.1
         # 5 = 5 + 0.1
 
+        playerX += playerX_change
+        if playerX <= 0:
+            playerX = 0
+        elif playerX > 736:
+            playerX = 736
         
+        # Enemy Movement
+        if i in range(num_of_enemies):
+
+            # Game Over
+            if enemyY[i] > 400:
+                for j in range (num_of_enemies):
+                    enemyY[j] = 2000
+                game_over_text()
+                break
+            elif score_value >= 7:
+                endofLevel1()
+                break
+            else:
+                enemyX[i] += enemyX_change[i]
+                if enemyX[i] <= 0:
+                    enemyY_change[i] = 4
+                    enemyY[i] += enemyY_change[i]
+                elif enemyX[i] >= 736:
+                    enemyX_change[i] = -4
+                    enemyY[i] += enemyY_change[i]
