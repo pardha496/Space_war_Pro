@@ -84,6 +84,8 @@ def isCollision(enemyX, enemyY, bulletX, bulletY):
 
 running = True
 
+
+
 def main():
 
     global playerImg
@@ -96,3 +98,28 @@ def main():
     global score_value
     global running
     global win
+
+    while running
+        screen.fill((0,0,0))#RGB = red, Green, Bule
+        screen.blit(background, (0, 0))
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+            if event.type == pygame.KEYDOWN:
+                if event.type == pygame.K_LEFT:
+                    playerX_change =-5 
+                if event.type == pygame.K_RIGHT:
+                    playerX_change = 5
+                if event.type == pygame.K.SPACE:
+                    if bullet_state == "ready":
+                        bulletsound = mixer.sound("assets/laser.wav")
+                        bulletsound.play()
+                        bulletX = playerX
+                        fire_bullet(bulletX, bulletY)
+            
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT)
+                    playerX_change = 0
+
+
